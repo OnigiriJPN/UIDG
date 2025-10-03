@@ -4,99 +4,35 @@
   <meta charset="UTF-8">
   <title>UUID Generator ~UIDG~</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      padding: 40px;
-    }
-
-    .container {
-      max-width: 500px;
-      margin: auto;
-    }
-
-    input, button, select {
-      margin: 10px;
-      padding: 10px;
-      font-size: 16px;
-      width: 90%;
-      max-width: 400px;
-    }
-
-    /* 🔐 AdBlock Overlay Styles */
-    #adblockOverlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 9999;
-      display: none;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .overlay-background {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.7);
-    }
-
-    .overlay-content {
-      position: relative;
-      background: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      text-align: center;
-      max-width: 90%;
-      z-index: 10000;
-    }
-
-    .overlay-content h2 {
-      font-size: 24px;
-      margin-bottom: 15px;
-    }
-
-    .overlay-content p {
-      font-size: 16px;
-      margin: 10px 0;
-    }
-
-    .overlay-content a {
-      display: inline-block;
-      margin-top: 15px;
-      font-size: 16px;
-      color: #007BFF;
-      text-decoration: underline;
-    }
-
-    .overlay-content button {
-      margin-top: 20px;
-      padding: 8px 20px;
-      font-size: 16px;
-    }
-
-    button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
     <h1 id="title">UUIDジェネレーター ~UIDG~</h1>
+    
+    <!-- 言語選択 -->
     <select id="languageSelect">
       <option value="ja">日本語</option>
       <option value="en">English</option>
     </select>
+
+    <!-- テーマ選択 -->
+    <select id="themeSelect">
+      <option value="light">ライト</option>
+      <option value="dark">ダーク</option>
+      <option value="cyber">サイバー</option>
+      <option value="custom">カスタム</option>
+    </select>
+
+    <!-- カスタム色入力 -->
+    <input type="color" id="customColor" value="#00ff00" style="display:none;">
+
     <input type="text" id="uuid" readonly placeholder="ここにUUIDが表示されます">
     <button id="generateBtn">生成</button>
     <button id="copyBtn">コピー</button>
   </div>
 
-  <!-- 🔐 AdBlock オーバーレイ -->
+  <!-- AdBlock オーバーレイ -->
   <div id="adblockOverlay">
     <div class="overlay-background"></div>
     <div class="overlay-content" id="overlayContent"></div>
