@@ -65,3 +65,34 @@ copyBtn.addEventListener('click', () => {
     document.execCommand('copy');
     alert(texts[languageSelect.value].copyAlert);
 });
+function isAdBlockEnabled(callback) {
+    const bait = document.createElement('div');
+    bait.className = 'adsbox'; // よくブロックされるクラス名
+    bait.style.height = '1px';
+    bait.style.width = '1px';
+    bait.style.position = 'absolute';
+    bait.style.top = '-1000px';
+    document.body.appendChild(bait);
+
+    // 少し遅れてチェック
+    window.setTimeout(() => {
+        const blocked = !bait || bait.offsetHeight === 0;
+        document.body.removeChild(bait);
+        callback(blocked);
+    }, 100);
+}
+
+// アドブロック検出して動作変更
+isAdBlockEnabled((adblockDetected) => {
+    if (adblockDetected) {
+        // ボタン無効化
+        generateBtn.disabled = true;
+        copyBtn.disabled = true;
+
+        // アラート付きの代替イベント
+        const alertMessage = '広告ブロッカーを無効にしてください。\nお使いのコンピューターは、広告ブロッカーを利用しています。\n広告ブロッカーを無効にしないと、このツールは使用できません。\nPlease disable your ad blocker.\nYour computer is using an ad blocker.\nYou will not be able to use this tool unless you disable your ad blocker.';
+
+        generateBtn.addEventListener('click', () => alert(alertMessage));
+        copyBtn.addEventListener('click', () => alert(alertMessage));
+    }
+});
