@@ -64,15 +64,21 @@ function setLanguage(lang){
 // テーマ適用
 function applyTheme(theme){
   currentTheme = theme;
-  document.body.className = theme;
+  document.body.className = theme; // クラスを切り替え
   localStorage.setItem('uuidTheme', theme);
+
+  // カスタム色表示
   customColor.style.display = (theme==='custom')?'inline-block':'none';
   customFontColor.style.display = (theme==='custom')?'inline-block':'none';
   if(theme==='custom'){
     document.body.style.backgroundColor = customColor.value;
     document.body.style.color = customFontColor.value;
   }
+
+  // **言語テキストも再適用**
+  setLanguage(currentLang);
 }
+
 
 // UUID生成
 function generateUUID(){
@@ -146,3 +152,4 @@ copyBtn.addEventListener('click', ()=>{
   document.execCommand('copy');
   alert(texts[currentLang].copyAlert);
 });
+
