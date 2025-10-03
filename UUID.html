@@ -5,6 +5,8 @@
   <title>UUID Generator ~UIDG~</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
+  <!-- サイバー用フォント -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
@@ -25,7 +27,8 @@
     </select>
 
     <!-- カスタム色入力 -->
-    <input type="color" id="customColor" value="#00ff00" style="display:none;">
+    <input type="color" id="customColor" value="#0000ff" style="display:none;">
+    <input type="color" id="customFontColor" value="#00ff00" style="display:none;">
 
     <input type="text" id="uuid" readonly placeholder="ここにUUIDが表示されます">
     <button id="generateBtn">生成</button>
@@ -41,4 +44,3 @@
   <script src="main.js"></script>
 </body>
 </html>
-
